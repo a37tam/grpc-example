@@ -1,0 +1,12 @@
+syntax="proto3";
+
+// The calculator service definition
+service Calculator {
+    // Adds 1 to a number
+    rpc AddOne (Number) returns (Number) {}
+}
+
+// The request/response message containing the input/output
+message Number {
+    int32 n = 1;
+}
