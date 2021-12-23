@@ -6,7 +6,6 @@
 using grpc::Channel;
 using grpc::ClientContext;
 using grpc::Status;
-using Calculator::Stub;
 
 class Client
 {
@@ -27,14 +26,14 @@ public:
 
         Status status = mStub->AddOne( &context, request, &response );
 
-        if( status == Status::OK )
+        if( status.ok() )
             std::cout << "Output: " << response.n() << std::endl;
         else
             std::cout << "Error occured." << std::endl;
     }
 
 private:
-   std::unique_ptr<Stub> mStub;
+   std::unique_ptr<Calculator::Stub> mStub;
 };
 
 int main( int argc, char **argv )
